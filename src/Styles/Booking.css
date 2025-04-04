@@ -1,0 +1,97 @@
+.booking {
+    width: 100%;
+    max-width: 600px; /* Increased width for a more spacious form */
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Added a subtle shadow for better focus */
+    font-family: Arial, sans-serif;
+  }
+  
+  .booking h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .booking div {
+    margin-bottom: 20px; /* Increased spacing between fields */
+  }
+  
+  .booking label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .booking input,
+  .booking select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding is included in width calculation */
+  }
+  
+  .booking input:focus,
+  .booking select:focus {
+    border-color: #007bff; /* Blue border on focus for better UX */
+    outline: none;
+  }
+  
+  .booking button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .booking button:hover {
+    background-color: #0056b3;
+  }
+  
+  .confirmation-message,
+  .error-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+  
+  .confirmation-message {
+    color: #28a745; /* Green color for success messages */
+    background-color: #eaf8e7; /* Light green background for success */
+  }
+  
+  .error-message {
+    color: #dc3545; /* Red color for error messages */
+    background-color: #f8d7da; /* Light red background for errors */
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .booking {
+      padding: 20px; /* Reduced padding on smaller screens */
+      width: 90%;
+    }
+  
+    .booking h2 {
+      font-size: 20px;
+    }
+  
+    .booking button {
+      font-size: 16px;
+    }
+  }
+  
