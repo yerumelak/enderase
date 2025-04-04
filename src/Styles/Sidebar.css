@@ -5,8 +5,8 @@
     left: 0;
     height: 100%;
     width: 220px; /* Increased width for better user experience */
-    background-color: #333;
-    color: white;
+    background-color: #4c71a8;
+    color: rgb(27, 2, 2);
     padding-top: 20px;
     z-index: 10; /* Ensure the sidebar stays above other content */
   }
