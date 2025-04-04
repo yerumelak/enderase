@@ -5,10 +5,10 @@ const Sidebar = ({ showSection }) => {
   return (
     <nav className="sidebar">
       <header>
-        <h1>
+        {/* <h1>
           እነደራሴ
           <span className="smaller-text">Enderase Carparking</span>
-        </h1>
+        </h1> */}
         <ul>
           <li>
             <button onClick={() => showSection('login')}>Login</button>
