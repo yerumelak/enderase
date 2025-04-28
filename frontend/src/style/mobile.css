@@ -30,4 +30,24 @@
         font-size: 5vw;
         font-weight: 600;
     }
+
+    .parking-lot .lot {
+        display: flex;
+    }
+
+    .parking-lot .top .car .car-img {
+        transform: rotate(90deg);
+    }
+
+    .parking-lot .bottom .car .car-img {
+        transform: rotate(270deg);
+    }
+
+    .parking-lot .car .car-img {
+        width: 30vw;
+    }
+
+    .lot .parking-spot {
+        height: 35vw;
+    }
 }
