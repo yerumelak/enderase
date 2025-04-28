@@ -1,0 +1,11 @@
+.lot-title {
+    display: flex;
+}
+
+.lot-title .btn-add-new {
+    width: fit-content;
+    height: fit-content;
+    margin-block: auto;
+    margin-left: auto;
+    margin-right: 4vw;
+}

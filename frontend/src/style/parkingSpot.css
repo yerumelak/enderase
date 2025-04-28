@@ -1,0 +1,61 @@
+.parking-spot {
+    width: 180px;
+    height: 300px;
+    border: 3px solid white;
+    /* Parking lines */
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.spot-number {
+    position: absolute;
+    top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0.7;
+    padding-left: 1vw;
+}
+
+.empty {
+    color: #b0b0b0;
+    font-size: 20px;
+    font-weight: 600;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.car {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popIn 0.5s ease;
+}
+
+.parking-lot .lot > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .2vw;
+    margin-top: 2vw;
+}
+
+.parking-lot .top .car-img {
+    transform: rotate(180deg);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

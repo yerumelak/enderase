@@ -1,0 +1,33 @@
+.menubar {
+    display: none;
+}
+
+@media (max-width: 50em) {
+    .nav-left {
+        display: none;
+    }
+
+    .mobnav {
+        left: 2vw;
+        top: 15vw;
+    }
+
+    .mobnav a {
+        text-decoration: none;
+        color: #ED760E;
+    }
+
+    .menubar {
+        display: block;
+        width: 4vw;
+    }
+
+    .logo {
+        width: 10vw;
+    }
+
+    .user-detail p {
+        font-size: 5vw;
+        font-weight: 600;
+    }
+}

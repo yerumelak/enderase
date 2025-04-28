@@ -1,0 +1,188 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    box-shadow: 0px 0px 9px 0px #39545533;
+}
+
+.navbar .menu {
+    display: none;
+}
+
+.navbar .user {
+    margin-left: auto;
+}
+
+.navbar .logo {
+    display: flex;
+}
+
+.navbar .url {
+    display: flex;
+    gap: .8vw;
+    margin-block: auto;
+}
+
+.app hr {
+    background-color: #696969;
+    margin-top: .5vw;
+    margin-bottom: 2vw;
+}
+
+.app .main {
+    margin-inline: 2vw;
+    margin-top: 1vw;
+}
+
+.app .list {
+    display: flex;
+}
+
+.app .title {
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #696969;
+    margin-top: 2vw;
+}
+
+.cards {
+    margin: .8vw;
+    margin-left: 0;
+    display: flex;
+    gap: 2vw;
+    flex-wrap: wrap;
+    width: fit-content;
+}
+
+.card {
+    display: flex;
+    border-radius: .8rem;
+    width: 18vw;
+    height: fit-content;
+    box-shadow: 0px 0px 19px 0px #ED760E33;
+    padding: .4vw;
+}
+
+.card .cardRating {
+    padding-right: .4vw;
+    margin-left: .6vw;
+}
+
+.card .lotImage {
+    width: 8vw;
+    height: 6vw;
+    border-radius: .8rem;
+    margin-block: auto;
+    padding-right: .4vw;
+}
+
+.card .ratting {
+    display: flex;
+    gap: .2vw;
+    margin-top: .2vw;
+}
+
+.card .rateIcon {
+    width: 1vw;
+    height: 1vw;
+    margin-block: auto;
+}
+
+.card .rate {
+    margin-block: auto;
+    font-size: .7vw;
+    font-weight: 600;
+    margin-top: .16vw;
+}
+
+.card .name {
+    font-size: 1vw;
+    font-weight: 600;
+    margin-top: .1vw;
+}
+
+.card .location {
+    color: #747474;
+    font-size: .8vw;
+    margin-top: .2vw;
+}
+
+.card .cardRating .book {
+    margin-top: .8vw;
+    margin-left: auto;
+    font-weight: 600;
+    padding-inline: .3vw;
+    padding-block: .2vw;
+    border-radius: .2vw;
+    color: #ffffff;
+    background-color: #ED760E;
+    width: fit-content;
+}
+
+.main .form {
+    border-radius: .5rem;
+    box-shadow: 0px 5px 11.7px 0px #00000029;
+    padding: 1vw;
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: 4vw;
+}
+
+.main .form p {
+    font-size: 1vw;
+    font-weight: 600;
+}
+
+.main .form label {
+    font-size: .8vw;
+}
+
+.arrow {
+    width: 1vw;
+}
+
+.formTitle {
+    display: flex;
+    gap: .2vw;
+    margin-bottom: .5vw;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: .5vw;
+    border-radius: .2rem;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background: #ED760E;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background: #ED760E;
+    cursor: pointer;
+}
