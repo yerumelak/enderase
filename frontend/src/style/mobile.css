@@ -47,7 +47,28 @@
         width: 30vw;
     }
 
+    .lot .parking-spot>.parking-spot {
+        height: fit-content;
+    }
+
     .lot .parking-spot {
-        height: 35vw;
+        height: fit-content;
+    }
+
+    .lot .parking-spot>.parking-spot>.parking-spot {
+        height: 35v;
+    }
+
+    #root .parking-lot .lot>div {
+        gap: 4vw;
+    }
+
+    .parking-spot .btn-edit,
+    .parking-spot .btn-delete {
+        margin-left: 2vw;
+    }
+
+    .parking-spot .btn-delete {
+        margin-top: 1vw;
     }
 }

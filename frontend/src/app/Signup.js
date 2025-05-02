@@ -16,10 +16,12 @@ export default function Signup() {
         e.preventDefault();
         setError('');
         try {
-            await api.post('api/register/', form);
-            navigate('/login'); // redirect after success
+            const success = await api.post('api/register/', form);
+            if (success) navigate('/login'); // redirect after success
+            else alert("Falied to login: ", success);
         } catch (err) {
             const message = err.response?.data?.password?.[0] || 'Signup failed';
+            alert("Falied to login: ", err);
             setError(message);
         }
     };
@@ -28,6 +30,7 @@ export default function Signup() {
             <div className="form-box">
                 <h2 id="form-title">Signup</h2>
                 <form id="auth-form" onSubmit={handleSubmit}>
+                    {error && <p className="error">{error}</p>}
                     <label>First Name</label>
                     <input onChange={handleChange} name="first_name" type="Name" placeholder="First Name" required />
                     <label>Last Name</label>

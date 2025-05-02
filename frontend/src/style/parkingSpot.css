@@ -1,6 +1,6 @@
 .parking-spot {
-    width: 180px;
-    height: 300px;
+    width: 10vw;
+    height: 18vw;
     border: 3px solid white;
     /* Parking lines */
     border-radius: 8px;
@@ -40,7 +40,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .2vw;
+    gap: 1vw;
     margin-top: 2vw;
 }
 

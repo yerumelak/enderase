@@ -18,6 +18,7 @@ export default function Login() {
         e.preventDefault();
         const success = await login(formData.email, formData.password);
         if (success) navigate('/');
+        else alert("Falied to login: ", success);
     };
 
     return (
