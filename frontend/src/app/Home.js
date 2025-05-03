@@ -20,27 +20,13 @@ export default function ParkingLot() {
     var bottomSpots = spots.slice(half);
 
     useEffect(() => {
-        api.get('/api/parking_spots').then(
-            (response) => {
-                console.log(response.data);
-                setSpots(response.data);
-            }).catch(
-                (error) => {
-                    console.log(error);
-                })
-    }, []);
-
-    useEffect(() => {
+        fetchSpots();
         half = Math.ceil(spots.length / 2);
         topSpots = spots.slice(0, half);
         bottomSpots = spots.slice(half);
         console.log(topSpots);
         console.log(bottomSpots);
-    }, [spots]);
-
-    useEffect(() => {
-        fetchSpots();
-    }, []);
+    }, [showModal, modalVisible, showDeleteModal]);
 
     const fetchSpots = () => {
         api.get('/api/parking_spots')
