@@ -61,7 +61,7 @@ export default function LocationForm({ initialData = null, onClose }) {
                 await api.put(`/api/parking_spots/${initialData.id}/`, formData);
             }
             else {
-                await api.post('/api/parking_spots/', formData); // <-- adjust API URL
+                await api.post('/api/parking_spots/', formData);
             }
             setFormData({
                 spot_number: '',
@@ -73,6 +73,7 @@ export default function LocationForm({ initialData = null, onClose }) {
             });
             onClose();
         } catch (err) {
+            alert(err);
             console.error(err);
         }
     };
