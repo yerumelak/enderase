@@ -59,9 +59,11 @@ export default function LocationForm({ initialData = null, onClose }) {
         try {
             if (initialData) {
                 await api.put(`/api/parking_spots/${initialData.id}/`, formData);
+                alert("Spot Update");
             }
             else {
                 await api.post('/api/parking_spots/', formData);
+                alert("New Spot Added");
             }
             setFormData({
                 spot_number: '',
