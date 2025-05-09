@@ -186,3 +186,7 @@ body {
     background: #ED760E;
     cursor: pointer;
 }
+
+.flex {
+    display: flex;
+}

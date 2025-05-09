@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import api from './auth/api';
+import { useTranslation } from "react-i18next";
 
 export default function History() {
     const [bookings, setBookings] = useState([]);
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         api.get('/api/booking/')
@@ -17,15 +19,13 @@ export default function History() {
 
     return (
         <div className='table-container'>
-            <h1 >My Bookings</h1>
             <table >
                 <thead>
                     <tr >
-                        <th>Spot Number</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Status</th>
-                        <th>Duration (hrs)</th>
+                        <th>{t("Spot Number")}</th>
+                        <th>{t("Start Time")}</th>
+                        <th>{t("End Time")}</th>
+                        <th>{t("Status")}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,9 +35,8 @@ export default function History() {
                             <td>{new Date(booking.start_time).toLocaleString()}</td>
                             <td>{new Date(booking.end_time).toLocaleString()}</td>
                             <td style={{ color: booking.status === 'confirmed' ? 'green' : 'red' }}>
-                                {booking.status}
+                                {t(booking.status)}
                             </td>
-                            <td >{(booking.duration || 0).toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -45,4 +44,3 @@ export default function History() {
         </div>
     );
 }
-

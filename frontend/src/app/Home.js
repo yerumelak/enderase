@@ -3,7 +3,7 @@ import api from "./auth/api";
 import ParkingSpot from "./ParinkingSpot";
 import "../style/home.css"
 import LocationForm from "./LocationForm";
-import { resolvePath } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function ParkingLot() {
     const [spots, setSpots] = useState([]);
@@ -15,6 +15,7 @@ export default function ParkingLot() {
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
+    const { t, i18n } = useTranslation();
 
     var half = Math.ceil(spots.length / 2);
     var topSpots = spots.slice(0, half);
@@ -121,10 +122,10 @@ export default function ParkingLot() {
     return (
         <div className="parking-lot" >
             <div className="lot-title">
-                <h1>Parking Lot</h1>
+                <h1>{t("Parking Lot")}</h1>
                 {user?.is_staff &&
                     <button className="btn-add-new" onClick={handleAddNew}>
-                        + Add New
+                        + {t("Add New")}
                     </button>
                 }
             </div>
@@ -184,9 +185,9 @@ export default function ParkingLot() {
             {showModal && (
                 <div style={modalStyles.overlay}>
                     <form style={modalStyles.modal}>
-                        <h2>Book Spot {selectedSpot.spot_number}</h2><br /><br />
+                        <h2>{t("Book Spot")} {selectedSpot.spot_number}</h2><br /><br />
                         <div>
-                            <label>Start Time:</label><br />
+                            <label>{t("Start Time")}:</label><br />
                             <input
                                 type="datetime-local"
                                 value={startTime}
@@ -194,7 +195,7 @@ export default function ParkingLot() {
                             /><br /><br />
                         </div>
                         <div>
-                            <label>End Time:</label><br />
+                            <label>{t("End Time")}:</label><br />
                             <input
                                 type="datetime-local"
                                 value={endTime}
@@ -202,10 +203,10 @@ export default function ParkingLot() {
                             /><br /><br />
                         </div>
                         <div>
-                            <label>Price: {price} ETB</label>
+                            <label>{t("Price")}: {price} {t("ETB")}</label>
                         </div>
-                        <button type="button" className="btn" onClick={submitBooking}>Book</button>
-                        <button className="btn" onClick={closeModal} >Cancel</button>
+                        <button type="button" className="btn" onClick={submitBooking}>{t("Book")}</button>
+                        <button className="btn" onClick={closeModal} >{t("Cancel")}</button>
                     </form>
                 </div>
             )}

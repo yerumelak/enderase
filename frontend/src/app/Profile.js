@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../style/EditProfile.css';  // optional, use the same #ED760E theme
 import api from './auth/api';
+import { useTranslation } from "react-i18next";
 
 export default function EditProfile() {
     const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export default function EditProfile() {
     });
 
     const [message, setMessage] = useState('');
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         // Get current profile
@@ -41,22 +43,22 @@ export default function EditProfile() {
 
     return (
         <div className="edit-profile">
-            <h2>Edit Profile</h2>
+            <h2>{t("Edit Profile")}</h2>
             {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
-                <label>First Name</label>
+                <label>{t("First Name")}</label>
                 <input name="first_name" value={formData.first_name} onChange={handleChange} />
 
-                <label>Last Name</label>
+                <label>{t("Last Name")}</label>
                 <input name="last_name" value={formData.last_name} onChange={handleChange} />
 
-                <label>Email</label>
+                <label>{t("Email")}</label>
                 <input name="email" type="email" value={formData.email} onChange={handleChange} />
 
-                <label>New Password</label>
+                <label>{t("New Password")}</label>
                 <input name="password" type="password" value={formData.password} onChange={handleChange} />
 
-                <button type="submit">Update</button>
+                <button type="submit">{t("Update")}</button>
             </form>
         </div>
     );
