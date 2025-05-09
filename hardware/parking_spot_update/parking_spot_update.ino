@@ -6,7 +6,7 @@ const char* password = "987654321";
 
 const String spotNames[4] = {"A1", "A2", "A3", "A4"};
 const int sensorPins[4] = {4, 15, 12, 14}; // D2, D1, D6, D5
-j
+
 bool lastStatus[4] = {false, false, false, false}; // false = no object, true = object present
 
 void setup() {
