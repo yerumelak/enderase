@@ -3,6 +3,7 @@ import api from "./auth/api";
 import ParkingSpot from "./ParinkingSpot";
 import "../style/home.css"
 import LocationForm from "./LocationForm";
+import { resolvePath } from "react-router-dom";
 
 export default function ParkingLot() {
     const [spots, setSpots] = useState([]);
@@ -18,6 +19,7 @@ export default function ParkingLot() {
     var half = Math.ceil(spots.length / 2);
     var topSpots = spots.slice(0, half);
     var bottomSpots = spots.slice(half);
+    const [price, setPrice] = useState(0);
 
     useEffect(() => {
         fetchSpots();
@@ -27,11 +29,27 @@ export default function ParkingLot() {
         console.log(topSpots);
         console.log(bottomSpots);
     }, [showModal, modalVisible, showDeleteModal]);
+    useEffect(() => {
+        const start = new Date(startTime);
+        const stop = new Date(endTime);
+
+        if (!isNaN(start) && !isNaN(stop)) {
+            var diff = stop - start;
+            diff = Math.floor(diff / 60000) / 60;
+            var currentPrice = parseFloat(selectedSpot.pricing.price_per_hour);
+            console.log(diff, currentPrice, diff * currentPrice);
+            setPrice(currentPrice);
+            console.log(price);
+        } else {
+            console.log("either startTime or endTime not filled");
+        }
+    }, [endTime, startTime]);
 
     const fetchSpots = () => {
         api.get('/api/parking_spots')
             .then((response) => {
                 setSpots(response.data);
+                console.log(response.data);
             })
             .catch((error) => {
                 console.error(error);
@@ -42,6 +60,7 @@ export default function ParkingLot() {
         console.log("open");
         setSelectedSpot(spot);
         setShowModal(true);
+        setPrice(0);
     };
 
     const closeModal = () => {
@@ -66,6 +85,7 @@ export default function ParkingLot() {
                 closeModal();
                 fetchSpots();
                 console.log(response.data);
+                setPrice(0);
             })
             .catch((error) => {
                 console.error(error.response.data);
@@ -128,7 +148,7 @@ export default function ParkingLot() {
                                     </button>
                                 </>
                             }
-                            <div className="parking-spot" onClick={() => openModal(spot)}>
+                            <div className="parking-spot" onClick={() => { if (spot.is_available) openModal(spot); }}>
                                 <ParkingSpot spotNumber={index + 1} occupied={!spot.is_available} spotName={spot.spot_number} />
                             </div>
                         </div>
@@ -153,7 +173,7 @@ export default function ParkingLot() {
                                     </button>
                                 </>
                             }
-                            <div className="parking-spot" onClick={() => openModal(spot)}>
+                            <div className="parking-spot" onClick={() => { if (spot.is_available) openModal(spot); }}>
                                 <ParkingSpot spotNumber={index + 1} occupied={!spot.is_available} spotName={spot.spot_number} />
                             </div>
                         </div>
@@ -178,8 +198,11 @@ export default function ParkingLot() {
                             <input
                                 type="datetime-local"
                                 value={endTime}
-                                onChange={(e) => setEndTime(e.target.value)}
+                                onChange={(e) => { setEndTime(e.target.value); }}
                             /><br /><br />
+                        </div>
+                        <div>
+                            <label>Price: {price} ETB</label>
                         </div>
                         <button type="button" className="btn" onClick={submitBooking}>Book</button>
                         <button className="btn" onClick={closeModal} >Cancel</button>

@@ -2,6 +2,11 @@ from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.utils import timezone
+from .models import ParkingSpot, Booking
+from rest_framework import status as http_status
 
 from rest_framework import permissions, viewsets
 
@@ -89,3 +94,43 @@ class BookingViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class UpdateStatus(APIView):
+    def post(self, request, spotname):
+        status_value = request.data.get('status')
+        print(status_value)
+        if status_value is None:
+            return JsonResponse(
+                {'error': 'Missing "is_available" in request data.'},
+                status=http_status.HTTP_400_BAD_REQUEST
+            )
+
+        # Convert to boolean
+        if isinstance(status_value, str):
+            status_value = status_value.lower() == 'no_object'
+
+        print(status_value)
+        # Get the ParkingSpot
+        spot = get_object_or_404(ParkingSpot, spot_number=spotname)
+
+        # Update is_available status
+        spot.is_available = status_value
+        spot.save()
+
+        # Optionally update any active booking if status is True (spot is freed)
+        if status_value:
+            active_bookings = Booking.objects.filter(
+                spot=spot,
+                end_time__gt=timezone.now(),
+                status='confirmed'
+            )
+            for booking in active_bookings:
+                booking.status = 'cancelled'
+                booking.save()
+
+        return JsonResponse({
+            'spot': spot.spot_number,
+            'is_available': spot.is_available,
+            'message': 'Spot availability updated successfully.'
+        })

@@ -25,4 +25,5 @@ urlpatterns = [
     path('api/register/', views.RegisterView.as_view(), name='register'),
     path('api/profile/', views.EditProfileView.as_view(), name='edit-profile'),
 
+    path('update/<str:spotname>/', views.UpdateStatus.as_view())
 ]
