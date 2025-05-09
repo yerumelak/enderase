@@ -38,7 +38,7 @@ export default function Layout() {
                 </div>
                 <div className="nav-right">
                     <div onClick={() => setDropdownOpen(!dropdownOpen)} className='user-detail'>
-                        <p>{user.first_name}</p>
+                        <p>{user?.first_name}</p>
                         <img
                             src={userIcon}
                             alt="User"
