@@ -6,7 +6,9 @@ const LanguageSelector = () => {
     const { t, i18n } = useTranslation();
 
     const changeLanguage = (e) => {
-        i18n.changeLanguage(e.target.value);
+        const selectedLang = e.target.value;
+        i18n.changeLanguage(selectedLang);
+        localStorage.setItem('app_language', selectedLang);
     };
 
     const selectStyle = {

@@ -9,11 +9,13 @@ const resources = {
   en: { translation: translationEN },
 };
 
+const savedLang = localStorage.getItem('app_language') || 'en';
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: "am", // default language
+    lng: savedLang, // default language
     fallbackLng: "en",
     interpolation: {
       escapeValue: false,
